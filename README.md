@@ -1,3 +1,3 @@
-# Learn gulp
+# Learn Grunt
 
-Hello Gulp
+Hello Grunt
