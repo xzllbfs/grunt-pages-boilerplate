@@ -28,6 +28,18 @@ module.exports = grunt => {
         }
       }
     },
+    swig: {
+      options: {
+        defaultContext: {
+          pageTitle: 'outputIndex'
+        },
+        templatesDir: 'src/'
+      },
+      development: {
+        dest: 'dist/pages/',
+        src: ['src/*.html']
+      }
+    },
     watch: {
       js: {
         files: ['src/assets/scripts/*.js'],
@@ -36,6 +48,10 @@ module.exports = grunt => {
       css: {
         files: ['src/assets/styles/*.scss'], // scss是sass的新的语法规范的扩展名
         tasks: ['sass']
+      },
+      pages: {
+        files: ['src/*'],
+        tasks: ['swig']
       }
     }
   })
@@ -45,5 +61,5 @@ module.exports = grunt => {
   // grunt.loadNpmTasks('grunt-sass')
   loadGruntTasks(grunt) // 自动加载所有的 grunt 插件中的任务
 
-  grunt.registerTask('default', ['sass', 'babel', 'watch'])
+  grunt.registerTask('default', ['sass', 'babel', 'swig', 'watch'])
 }
